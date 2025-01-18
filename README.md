@@ -32,6 +32,7 @@ What makes PromptPal special is its unique spotlight feature - a focused reading
 - 📝 Multiple font size options (Small/Medium/Large)
 - 🖥️ Fullscreen mode support
 - 🏃‍♂️ Smooth auto-scrolling functionality
+- ⌨️ Spacebar control for quick pause/resume
 - 🔒 Completely offline - works without internet
 - 📱 Responsive design - works on all devices
 
@@ -68,7 +69,8 @@ That's it! No build process, no dependencies to install.
 3. Adjust font size and scroll speed as needed
 4. Click 'Start' to begin auto-scrolling
 5. Use the spotlight area to maintain focus while reading
-6. Toggle full screen for distraction-free reading
+6. Press spacebar to pause/resume scrolling
+7. Toggle full screen for distraction-free reading
 
 ## Tech Stack
 
