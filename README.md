@@ -8,6 +8,10 @@
   A privacy-focused, offline-first teleprompter web application with a unique spotlight reading feature.
 </p>
 
+<p align="center">
+  🚀 <a href="https://prompt-pal.tiiny.site/">Try it live!</a>
+</p>
+
 ## Why Another Teleprompter?
 
 Most teleprompter applications available today come with limitations:
@@ -38,9 +42,17 @@ What makes PromptPal special is its unique spotlight feature - a focused reading
 - A modern web browser
 - No additional installations required!
 
+### Live Demo
+
+The application is publicly hosted and can be accessed at:
+[https://prompt-pal.tiiny.site/](https://prompt-pal.tiiny.site/)
+
+No installation needed - just open the URL in your browser and start using it!
+
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/testronai/prompt-pal.git
 ```
