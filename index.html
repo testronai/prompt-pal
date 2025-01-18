@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptPal</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body class="dark-mode">
+    <div class="app-container">
+        <nav class="app-header">
+            <div class="brand">
+                <img src="logo.png" alt="PromptPal Logo" class="app-logo">
+                <h1 class="app-title"></h1>
+            </div>
+            <button id="modeToggleBtn" class="mode-toggle">
+                <span class="mode-icon">🌓</span>
+            </button>
+        </nav>
+        
+        <div class="main-content">
+            <div class="script-container">
+                <div class="script-wrapper">
+                    <div class="focus-overlay">
+                        <div class="focus-area">
+                        </div>
+                    </div>
+                    <textarea id="scriptInput" class="script-area" placeholder="Type or paste your script here..."></textarea>
+                </div>
+            </div>
+
+            <div class="controls-container">
+                <div class="controls">
+                    <div class="btn-group">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="38" height="38">
+                            <title>Scroll Speed</title>
+                            <path class="btn-group-icon" fill="none" d="M0 0h24v24H0z"></path>
+                            <path fill="var(--text-primary)" d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44zm-9.79 6.84a2 2 0 0 0 2.83 0l5.66-8.49-8.49 5.66a2 2 0 0 0 0 2.83z"></path>
+                        </svg>
+                        <button id="slowSpeedBtn" class="control-btn">Slow</button>
+                        <button id="mediumSpeedBtn" class="control-btn active">Medium</button>
+                        <button id="fastSpeedBtn" class="control-btn">Fast</button>
+                    </div>
+
+                    <div class="btn-group">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="38" height="38">
+                            <title>Text Size</title>
+                            <path class="btn-group-icon" fill="none" d="M0 0h24v24H0z"></path>
+                            <path fill="var(--text-primary)" d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"></path>
+                        </svg>
+                        <button id="smallFontBtn" class="control-btn">S</button>
+                        <button id="mediumFontBtn" class="control-btn active">M</button>
+                        <button id="largeFontBtn" class="control-btn">L</button>
+                    </div>
+
+                    <div class="control-actions">
+                        <button id="startPauseBtn" class="control-btn primary-btn">Start</button>
+                        <button id="fullscreenBtn" class="control-btn primary-btn">Full Screen</button>
+                        <button id="resetBtn" class="control-btn danger-btn">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

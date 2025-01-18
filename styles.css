@@ -1,0 +1,643 @@
+/* Modern CSS with dark/light mode support */
+
+:root {
+    /* Dracula theme colors */
+    --bg-dark: #282a36;           /* Main background */
+    --bg-darker: #1a1b26;         /* Darker background for contrast */
+    --text-primary: #f8f8f2;      /* Primary text color */
+    --text-secondary: #6272a4;    /* Secondary text color */
+    --accent-primary: #bd93f9;    /* Purple accent */
+    --accent-secondary: #ff79c6;  /* Pink accent */
+    --focus-area: #44475a;        /* Focus area background */
+    --button-hover: #50fa7b;      /* Green for hover states */
+    --danger: #ff5555;            /* Red for danger/reset button */
+    
+    /* Light theme colors - updated */
+    --bg-light: #f8fafc;           /* Soft white background */
+    --bg-lighter: #ffffff;         /* Pure white for contrast */
+    --text-light-primary: #1e293b; /* Dark slate for text */
+    --text-light-secondary: #64748b; /* Muted text */
+    --accent-light-primary: #6366f1; /* Indigo accent */
+    --accent-light-secondary: #8b5cf6; /* Purple secondary */
+    --focus-light-area: #f1f5f9;   /* Light gray for focus */
+    --button-light-hover: #4ade80; /* Green for hover */
+    --danger-light: #ef4444;       /* Red for danger */
+}
+
+/* Dark mode variables */
+.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+}
+
+.dark-mode .app-header {
+    background-color: var(--bg-darker);
+    border-bottom: 1px solid var(--accent-primary);
+}
+
+.dark-mode .script-area {
+    background-color: var(--bg-darker);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-primary);
+}
+
+.dark-mode .focus-area {
+    background-color: rgba(68, 71, 90, 0.3);
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 0 30px rgba(189, 147, 249, 0.3);
+}
+
+.dark-mode .focus-overlay::before,
+.dark-mode .focus-overlay::after {
+    background: rgba(26, 27, 38, 0.95);
+}
+
+.dark-mode .focus-area::before,
+.dark-mode .focus-area::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 70%;
+    top: 15%;
+    border-radius: 2px;
+    background: var(--accent-primary);
+    opacity: 0.9;
+    box-shadow: 0 0 10px rgba(189, 147, 249, 0.4);
+}
+
+.dark-mode .control-btn {
+    background-color: var(--bg-darker);
+    color: var(--text-primary);
+    border: 1px solid var(--text-secondary);
+}
+
+.dark-mode .control-btn:hover {
+    border-color: var(--button-hover);
+    color: var(--button-hover);
+}
+
+.dark-mode .control-btn.active {
+    background-color: var(--accent-primary);
+    color: var(--bg-darker);
+    border-color: var(--accent-primary);
+}
+
+.dark-mode .primary-btn {
+    background-color: var(--accent-primary);
+    color: var(--bg-darker);
+    border-color: var(--accent-primary);
+}
+
+.dark-mode .primary-btn:hover {
+    background-color: var(--button-hover);
+    border-color: var(--button-hover);
+}
+
+.dark-mode .danger-btn {
+    background-color: var(--bg-darker);
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+.dark-mode .danger-btn:hover {
+    background-color: var(--danger);
+    color: var(--text-primary);
+}
+
+/* Add subtle transitions */
+.control-btn, .script-area, .focus-area {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Add a subtle glow effect to the focus area */
+.dark-mode .focus-area {
+    box-shadow: 0 0 15px rgba(189, 147, 249, 0.1);
+}
+
+/* Improve scrollbar styling for dark mode */
+.dark-mode .script-area::-webkit-scrollbar {
+    width: 12px;
+}
+
+.dark-mode .script-area::-webkit-scrollbar-track {
+    background: var(--bg-darker);
+}
+
+.dark-mode .script-area::-webkit-scrollbar-thumb {
+    background-color: var(--accent-primary);
+    border-radius: 6px;
+    border: 3px solid var(--bg-darker);
+}
+
+/* Add subtle hover effects to buttons */
+.dark-mode .btn-group .control-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(189, 147, 249, 0.2);
+}
+
+/* Base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Layout */
+.app-container {
+    min-height: 100vh;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.app-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Mode Toggle */
+.mode-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.mode-toggle:hover {
+    background-color: var(--bg-secondary);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Important for Firefox */
+}
+
+/* Script Area */
+.script-container {
+    flex: 1;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.script-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+}
+
+/* Focus Area Styles */
+.focus-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.focus-overlay::before {
+    display: none; /* Remove top overlay */
+}
+
+.focus-overlay::after {
+    content: '';
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+    margin-top: 0;
+}
+
+.dark-mode .focus-overlay::after {
+    background: rgba(10, 15, 44, 0.7);
+}
+
+.focus-area {
+    height: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border-radius: 4px;
+    backdrop-filter: blur(0px);
+}
+
+.focus-area::before {
+    left: 0;
+}
+
+.focus-area::after {
+    right: 0;
+}
+
+.script-area {
+    width: 100%;
+    flex: 1;
+    padding: 20px 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    resize: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* Controls */
+.controls-container {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-primary);
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.btn-group svg {
+    margin-right: 0.5rem;
+    opacity: 0.8;
+}
+
+.control-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background-color: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+    font-size: 0.9rem;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.control-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+}
+
+.danger-btn {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.danger-btn:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.control-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn-group {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .control-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .control-btn {
+        width: 100%;
+    }
+} 
+
+/* Enhance button styling for dark mode */
+.dark-mode .control-btn:hover {
+    background-color: #4DFFFF;
+    color: #0A0F2C;
+    box-shadow: 0 0 15px rgba(77, 255, 255, 0.3);
+}
+
+.dark-mode .control-btn.active {
+    background-color: #4DFFFF;
+    color: #0A0F2C;
+    box-shadow: 0 0 15px rgba(77, 255, 255, 0.3);
+}
+
+.dark-mode .primary-btn {
+    background-color: #4DFFFF;
+    color: #0A0F2C;
+    box-shadow: 0 0 15px rgba(77, 255, 255, 0.2);
+}
+
+.dark-mode .primary-btn:hover {
+    box-shadow: 0 0 20px rgba(77, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Script area styling for dark mode */
+.dark-mode .script-area {
+    background-color: #141B41;
+    border-color: #1E2756;
+    color: #E2E8F0;
+} 
+
+/* Light mode styles */
+.light-mode {
+    background-color: var(--bg-light);
+    color: var(--text-light-primary);
+}
+
+.light-mode .app-header {
+    background-color: var(--bg-lighter);
+    border-bottom: 1px solid var(--accent-light-primary);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .script-area {
+    background-color: var(--bg-lighter);
+    color: var(--text-light-primary);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .focus-area {
+    background-color: rgba(241, 245, 249, 0.3);
+    border: 2px solid var(--accent-light-primary);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+}
+
+.light-mode .focus-overlay::before,
+.light-mode .focus-overlay::after {
+    background: rgba(248, 250, 252, 0.95);
+}
+
+.light-mode .focus-area::before,
+.light-mode .focus-area::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 70%;
+    top: 15%;
+    border-radius: 2px;
+    background: var(--accent-light-primary);
+    opacity: 0.9;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+.light-mode .control-btn {
+    background-color: var(--bg-lighter);
+    color: var(--text-light-primary);
+    border: 1px solid var(--text-light-secondary);
+}
+
+.light-mode .control-btn:hover {
+    border-color: var(--accent-light-primary);
+    color: var(--accent-light-primary);
+    background-color: rgba(99, 102, 241, 0.05);
+}
+
+.light-mode .control-btn.active {
+    background-color: var(--accent-light-primary);
+    color: var(--bg-lighter);
+    border-color: var(--accent-light-primary);
+}
+
+.light-mode .primary-btn {
+    background-color: var(--accent-light-primary);
+    color: var(--bg-lighter);
+    border-color: var(--accent-light-primary);
+}
+
+.light-mode .primary-btn:hover {
+    background-color: var(--button-light-hover);
+    border-color: var(--button-light-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 222, 128, 0.2);
+}
+
+.light-mode .danger-btn {
+    background-color: var(--bg-lighter);
+    color: var(--danger-light);
+    border-color: var(--danger-light);
+}
+
+.light-mode .danger-btn:hover {
+    background-color: var(--danger-light);
+    color: var(--bg-lighter);
+}
+
+/* Light mode focus area and overlay */
+.light-mode .focus-overlay::after {
+    background: rgba(241, 245, 249, 0.8);
+}
+
+.light-mode .focus-area {
+    background: linear-gradient(
+        to bottom,
+        rgba(241, 245, 249, 0.1) 0%,
+        rgba(241, 245, 249, 0.2) 50%,
+        rgba(241, 245, 249, 0.1) 100%
+    );
+}
+
+/* Light mode focus markers */
+.light-mode .focus-area::before,
+.light-mode .focus-area::after {
+    background: var(--accent-light-primary);
+    opacity: 0.4;
+}
+
+/* Light mode scrollbar */
+.light-mode .script-area::-webkit-scrollbar {
+    width: 12px;
+}
+
+.light-mode .script-area::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 6px;
+}
+
+.light-mode .script-area::-webkit-scrollbar-thumb {
+    background-color: var(--accent-light-primary);
+    border-radius: 6px;
+    border: 3px solid var(--bg-light);
+}
+
+/* Light mode controls container */
+.light-mode .controls-container {
+    background: var(--bg-lighter);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+/* Light mode button group */
+.light-mode .btn-group {
+    background-color: var(--bg-lighter);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.light-mode .btn-group .control-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+} 
+
+/* Dark mode text styles - base state */
+.dark-mode .script-area {
+    background-color: var(--bg-darker);
+    color: rgba(248, 248, 242, 0.65); /* Increased from 0.3 to 0.65 for better visibility */
+}
+
+/* Focus area text styles - make it more specific and comprehensive */
+.dark-mode .script-container .script-area,
+.dark-mode .focus-overlay ~ .script-area,
+.dark-mode .focus-area ~ .script-area,
+.dark-mode .script-area.scrolling {
+    color: rgba(248, 248, 242, 0.65); /* Increased from 0.3 to 0.65 for better visibility */
+}
+
+/* Bright text in focus area - higher specificity */
+.dark-mode .focus-area + .script-area,
+.dark-mode .script-container .focus-area + .script-area,
+.dark-mode .script-area.scrolling .focus-area + .script-area {
+    color: #ffffff !important; /* Keep focus area text bright white */
+    text-shadow: 
+        0 0 2px rgba(255, 255, 255, 0.8),
+        0 0 4px rgba(189, 147, 249, 0.6);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure focus area remains prominent during scrolling */
+.dark-mode .focus-overlay {
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Enhance focus area visibility during scroll */
+.dark-mode .focus-area {
+    z-index: 4;
+    background-color: rgba(68, 71, 90, 0.2); /* More transparent background */
+}
+
+/* Darker overlay for better contrast during scroll */
+.dark-mode .focus-overlay::before,
+.dark-mode .focus-overlay::after {
+    background: rgba(26, 27, 38, 0.85); /* Reduced from 0.97 to 0.85 for better text visibility */
+    z-index: 2;
+}
+
+/* Ensure text in focus area stays bright during scroll */
+.dark-mode .script-area:not(:focus):not(:active) {
+    color: inherit;
+}
+
+/* Additional specificity for scrolling state */
+.dark-mode .script-container.scrolling .focus-area + .script-area {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 2px rgba(255, 255, 255, 0.8),
+        0 0 4px rgba(189, 147, 249, 0.6);
+} 
+
+/* Light mode icon color fixes */
+.light-mode .btn-group svg path[fill="var(--text-primary)"] {
+    fill: var(--text-light-primary);
+}
+
+.light-mode .btn-group-icon {
+    color: var(--text-light-primary);
+}
+
+/* Ensure dark mode icons remain unchanged */
+.dark-mode .btn-group svg path[fill="var(--text-primary)"] {
+    fill: var(--text-primary);
+}
+
+.dark-mode .btn-group-icon {
+    color: var(--text-primary);
+} 
