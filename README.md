@@ -24,6 +24,15 @@ PromptPal was born over a weekend to address these limitations. As a content cre
 
 What makes PromptPal special is its unique spotlight feature - a focused reading area that helps you concentrate on the current text while maintaining context of what's coming next.
 
+## Demo
+
+<p align="center">
+  <video width="100%" controls>
+    <source src="demo-video.mov" type="video/quicktime">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
 ## Features
 
 - 🌓 Dark/Light mode toggle for comfortable reading
