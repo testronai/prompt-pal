@@ -27,10 +27,13 @@ What makes PromptPal special is its unique spotlight feature - a focused reading
 ## Demo
 
 <p align="center">
-  <video width="100%" controls>
-    <source src="demo-video.mov" type="video/quicktime">
-    Your browser does not support the video tag.
-  </video>
+  <a href="https://youtu.be/KHh5nf2iwnA" target="_blank">
+    <img src="https://img.youtube.com/vi/KHh5nf2iwnA/maxresdefault.jpg" alt="PromptPal Demo Video" width="100%" style="max-width:800px;">
+  </a>
+</p>
+
+<p align="center">
+  <i>Click the image above to watch the demo on YouTube</i>
 </p>
 
 ## Features
