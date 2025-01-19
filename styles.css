@@ -315,8 +315,11 @@ body {
 }
 
 .btn-group svg {
-    margin-right: 0.5rem;
-    opacity: 0.8;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;  /* Prevent icons from shrinking below this size */
+    min-height: 38px;
+    margin-right: 8px;
 }
 
 .control-btn {
@@ -375,11 +378,13 @@ body {
     .controls {
         flex-direction: column;
         align-items: stretch;
+        padding: 15px;      /* Add more padding for touch targets */
     }
     
     .btn-group {
         width: 100%;
         justify-content: center;
+        margin-bottom: 15px;  /* Add more spacing between control groups */
     }
     
     .control-actions {
@@ -390,7 +395,24 @@ body {
     .control-btn {
         width: 100%;
     }
-} 
+
+    .btn-group svg {
+        width: 42px;        /* Slightly larger on mobile */
+        height: 42px;
+        min-width: 42px;
+        min-height: 42px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .btn-group svg {
+        width: 46px;        /* Even larger on very small screens */
+        height: 46px;
+        min-width: 46px;
+        min-height: 46px;
+    }
+}
 
 /* Enhance button styling for dark mode */
 .dark-mode .control-btn:hover {
